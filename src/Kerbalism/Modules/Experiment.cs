@@ -124,8 +124,9 @@ namespace KERBALISM
 
 		#region init / parsing
 
-		public void Configure(bool enable)
+		public void Configure(bool enable, int multiplier)
 		{
+			// multiplier is ignored for experiments
 			enabled = enable;
 			isEnabled = enable;
 		}

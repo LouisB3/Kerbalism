@@ -63,7 +63,7 @@ namespace KERBALISM
 				return;
 
 			// configure on start, must be executed with enabled true on parts first load.
-			Configure(true);
+			Configure(true, 1);
 
 			// The dump valve instance is acquired either from the game-wide instance in the editor
 			// or from the persisted VesselData instance in flight.
@@ -112,22 +112,28 @@ namespace KERBALISM
 		}
 
 		///<summary> Called by Configure.cs. Configures the controller to settings passed from the configure module</summary>
-		public void Configure(bool enable)
+		public void Configure(bool enable, int multiplier)
 		{
+			PartResource partResource = part.Resources[resource];
 			if (enable)
 			{
+				double configuredCapacity = capacity * multiplier;
 				// if never set
 				// - this is the case in the editor, the first time, or in flight
 				//   in the case the module was added post-launch, or EVA kerbals
-				if (!part.Resources.Contains(resource))
+				// - check capacity so we apply apply multiplier changes.
+				// - don't check amount as we don't want to alter it in flight (ie, self-consuming processes)
+				if (partResource == null || partResource.maxAmount != configuredCapacity)
 				{
 					// add the resource
 					// - always add the specified amount, even in flight
-					Lib.AddResource(part, resource, (!broken && running) ? capacity : 0.0, capacity);
+					Lib.AddResource(part, resource, (!broken && running) ? configuredCapacity : 0.0, configuredCapacity);
 				}
 			}
-			else
-				Lib.RemoveResource(part, resource, 0.0, capacity);
+			else if (partResource != null)
+			{
+				Lib.RemoveResource(part, resource, 0.0, partResource.maxAmount);
+			}
 		}
 
 		public void ModuleIsConfigured() => isConfigurable = true;
