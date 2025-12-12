@@ -18,33 +18,66 @@ namespace KERBALISM
 		// pseudo-ctor
 		public override void OnStart(StartState state)
 		{
-			// don't break tutorial scenarios
-			if (Lib.DisableScenario(this)) return;
-
-			// update RMB ui
-			foreach (PartModule pm in part.Modules)
+			if (!Lib.DisableScenario(this))
 			{
-				if (pm.name.Equals(targetModule))
+				try
 				{
-					targetPM = pm;
+					foreach (PartModule partModule in vessel.rootPart.Modules)
+					{
+						if (partModule.moduleName.Equals(targetModule))
+						{
+							targetPM = partModule;
+						}
+					}
+					if (string.IsNullOrEmpty(title))
+					{
+						title = targetPM.moduleName;
+					}
+					Fields["Status"].guiName = title;
+				}
+				catch
+				{
 				}
 			}
-			if (string.IsNullOrEmpty(title))
-				title = this.targetPM.name;
-
-			Fields["Status"].guiName = title;
 		}
 
 		public void Update()
 		{
-			// update ui
-			if (!part.IsPAWVisible())
-				return;
-
-			Status = running ? "On" : "Off";
-			if (this.running != targetPM.enabled)
+			if (part.IsPAWVisible())
 			{
-				targetPM.enabled = !targetPM.enabled;
+				Status = (running ? "On" : "Off");
+			}
+			try
+			{
+				if (running != targetPM.enabled)
+				{
+					running = targetPM.enabled;
+				}
+			}
+			catch
+			{
+				if (!Lib.DisableScenario(this))
+				{
+					try
+					{
+						foreach (PartModule partModule in vessel.rootPart.Modules)
+						{
+							Debug.LogWarning("POO:" + partModule.moduleName);
+							if (partModule.moduleName.Equals(targetModule))
+							{
+								targetPM = partModule;
+							}
+						}
+						if (string.IsNullOrEmpty(title))
+						{
+							title = targetPM.moduleName;
+						}
+						Fields["Status"].guiName = title;
+					}
+					catch
+					{
+					}
+				}
 			}
 		}
 
