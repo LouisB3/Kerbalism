@@ -1,3 +1,11 @@
+## v3.26 for all versions of KSP from 1.8.0 to 1.12.x
+
+ - 2025-12-11
+
+ ### Changes since the last release
+ *  Fix: Disabled habitats included in radiation calculations #965 (@Shnpl)
+ *  Add ECDrainViaPM module, allowing arbitrary EC drain and syncing to module enabled status on a named partmodule (documentation forthcoming) (@R-T-B)
+
 ## v3.25 for all versions of KSP from 1.8.0 to 1.12.x
 
  - 2025-09-21
