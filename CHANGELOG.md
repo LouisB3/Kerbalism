@@ -1,5 +1,12 @@
 ## v3.27 for all versions of KSP from 1.8.0 to 1.12.x
 
+ - 2025-12-12
+
+ ### Changes since the last release
+ *  Added:  Field moduleTitle to ECDrainViaPM, for showing what the EC Drain is coming from.  All this will be documented on the wiki very soon. (@R-T-B)
+
+## v3.27 for all versions of KSP from 1.8.0 to 1.12.x
+
  - 2025-12-11
 
  ### Changes since the last release

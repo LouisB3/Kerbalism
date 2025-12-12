@@ -8,6 +8,7 @@ namespace KERBALISM
 	public class ECDrainViaPM : PartModule, ISpecifics, IKerbalismModule
 	{
 		[KSPField(isPersistant = true)] public string title = string.Empty;     // GUI name of the status action in the PAW
+		[KSPField(isPersistant = true)] public string moduleTitle;     // GUI name of the status action in the PAW
 		[KSPField(isPersistant = true)] public string targetModule = string.Empty;                     // target module to toggle
 		[KSPField(isPersistant = true)] public double ec_rate;                  // EC consumption rate per-second (optional)
 		[KSPField(isPersistant = true)] public bool running = false;            // start state
@@ -29,11 +30,15 @@ namespace KERBALISM
 							targetPM = partModule;
 						}
 					}
-					if (string.IsNullOrEmpty(title))
+					if (string.IsNullOrEmpty(title) && !string.IsNullOrEmpty(moduleTitle))
+					{
+						title = moduleTitle;
+					}
+					else if (string.IsNullOrEmpty(title))
 					{
 						title = targetPM.moduleName;
 					}
-					Fields["Status"].guiName = title;
+						Fields["Status"].guiName = title;
 				}
 				catch
 				{
@@ -56,28 +61,6 @@ namespace KERBALISM
 			}
 			catch
 			{
-				if (!Lib.DisableScenario(this))
-				{
-					try
-					{
-						foreach (PartModule partModule in vessel.rootPart.Modules)
-						{
-							Debug.LogWarning("POO:" + partModule.moduleName);
-							if (partModule.moduleName.Equals(targetModule))
-							{
-								targetPM = partModule;
-							}
-						}
-						if (string.IsNullOrEmpty(title))
-						{
-							title = targetPM.moduleName;
-						}
-						Fields["Status"].guiName = title;
-					}
-					catch
-					{
-					}
-				}
 			}
 		}
 
