@@ -7,9 +7,6 @@ namespace KERBALISM
 {
 	public class ECDrainViaPM : PartModule, ISpecifics, IKerbalismModule
 	{
-		// config
-		[KSPField] public string active;                          // name of animation to play when enabling/disabling
-
 		[KSPField(isPersistant = true)] public string title = string.Empty;     // GUI name of the status action in the PAW
 		[KSPField(isPersistant = true)] public string targetModule = string.Empty;                     // target module to toggle
 		[KSPField(isPersistant = true)] public double ec_rate;                  // EC consumption rate per-second (optional)
@@ -17,10 +14,6 @@ namespace KERBALISM
 		private PartModule targetPM = null;
 
 		public string Status;
-
-		// animations
-		Animator active_anim;
-		bool radiation_impact_calculated = false;
 
 		// pseudo-ctor
 		public override void OnStart(StartState state)
