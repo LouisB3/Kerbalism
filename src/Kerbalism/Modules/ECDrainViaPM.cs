@@ -13,6 +13,7 @@ namespace KERBALISM
 		[KSPField(isPersistant = true)] public double ec_rate;                  // EC consumption rate per-second (optional)
 		[KSPField(isPersistant = true)] public bool running = false;            // start state
 		private PartModule targetPM = null;
+		private Vessel targetVessel = null;
 
 		public string Status;
 
@@ -23,11 +24,12 @@ namespace KERBALISM
 			{
 				try
 				{
-					foreach (PartModule partModule in vessel.rootPart.Modules)
+					foreach (PartModule partModule in base.part.Modules)
 					{
 						if (partModule.moduleName.Equals(targetModule))
 						{
 							targetPM = partModule;
+							targetVessel = base.vessel;
 						}
 					}
 					if (string.IsNullOrEmpty(title) && !string.IsNullOrEmpty(moduleTitle))
@@ -36,9 +38,9 @@ namespace KERBALISM
 					}
 					else if (string.IsNullOrEmpty(title))
 					{
-						title = targetPM.moduleName;
+						title = this.targetPM.moduleName;
 					}
-						Fields["Status"].guiName = title;
+					base.Fields["Status"].guiName = title;
 				}
 				catch
 				{
@@ -48,7 +50,18 @@ namespace KERBALISM
 
 		public void Update()
 		{
-			if (part.IsPAWVisible())
+			if (!targetVessel.Equals(base.vessel))
+			{
+				foreach (PartModule partModule in base.part.Modules)
+				{
+					if (partModule.moduleName.Equals(targetModule))
+					{
+						targetPM = partModule;
+						targetVessel = base.vessel;
+					}
+				}
+			}
+			if (base.part.IsPAWVisible())
 			{
 				Status = (running ? "On" : "Off");
 			}
