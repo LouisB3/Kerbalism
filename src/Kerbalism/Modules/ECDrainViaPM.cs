@@ -54,9 +54,9 @@ namespace KERBALISM
 			}
 			try
 			{
-				if (running != targetPM.enabled)
+				if (running != targetPM.moduleIsEnabled)
 				{
-					running = targetPM.enabled;
+					running = targetPM.moduleIsEnabled;
 				}
 			}
 			catch
