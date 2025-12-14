@@ -1,4 +1,11 @@
-## v3.27 for all versions of KSP from 1.8.0 to 1.12.x
+## v3.29 for all versions of KSP from 1.8.0 to 1.12.x
+
+ - 2025-12-14
+
+ ### Changes since the last release
+ *  Changed:  ECDrainViaPM now references a PartModules .moduleIsEnabled rather than the base MonoBehaviors .enabled, for more granular control. (@R-T-B)
+
+## v3.28 for all versions of KSP from 1.8.0 to 1.12.x
 
  - 2025-12-12
 
