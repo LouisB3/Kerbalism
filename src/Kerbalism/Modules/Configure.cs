@@ -217,6 +217,9 @@ namespace KERBALISM
 				bool active = count > 0;
 				active &= enabled;
 
+				// fix issue #949 : re-detect if setup is allowed due to tech restrictions
+				active &= setup.tech.Length == 0 || Lib.HasTech(setup.tech);
+
 				// detect if the setup was previously selected in multiple slots
 				int prev_count = (prev_selected.FindAll(x => x == setup.name)).Count;
 
