@@ -47,55 +47,42 @@ namespace KERBALISM
 		{
 			// environment factors
 			firm_ground = env_firm_ground;
-			not_alone = env_not_alone;
-			call_home = env_call_home;
-
-			// if loaded
-			if (v.loaded)
+			try
 			{
-				// scan parts for comfort
-				foreach (Comfort c in Lib.FindModules<Comfort>(v))
+				if (Lib.CrewCount(v.protoVessel) > 1)
 				{
-					switch (c.bonus)
-					{
-						case "firm-ground": firm_ground = true; break;
-						case "not-alone": not_alone = true; break;
-						case "call-home": call_home = true; break;
-						case "exercise": exercise = true; break;
-						case "panorama": panorama = true; break;
-						case "plants": plants = true; break;
-					}
+					this.not_alone = true;
 				}
-
-				// scan parts for gravity ring
-				if (Lib.IsPowered(v))
+				else
 				{
-					firm_ground |= Lib.HasModule<GravityRing>(v, k => k.deployed);
+					this.not_alone = false;
 				}
 			}
-			// if not loaded
-			else
+			catch
 			{
-				// scan parts for comfort
-				foreach (ProtoPartModuleSnapshot m in Lib.FindModules(v.protoVessel, "Comfort"))
-				{
-					switch (Lib.Proto.GetString(m, "bonus"))
-					{
-						case "firm-ground": firm_ground = true; break;
-						case "not-alone": not_alone = true; break;
-						case "call-home": call_home = true; break;
-						case "exercise": exercise = true; break;
-						case "panorama": panorama = true; break;
-						case "plants": plants = true; break;
-					}
-				}
+				this.not_alone = env_not_alone;
+			}
+			call_home = env_call_home;
 
-				// scan parts for gravity ring
-				if (Lib.IsPowered(v))
+			// scan parts for comfort
+			foreach (ProtoPartModuleSnapshot m in Lib.FindModules(v.protoVessel, "Comfort"))
+			{
+				switch (Lib.Proto.GetString(m, "bonus"))
+				{
+					case "firm-ground": firm_ground = true; break;
+					case "not-alone": not_alone = (Lib.CrewCount(v.protoVessel) > 1); break;
+					case "call-home": call_home = true; break;
+					case "exercise": exercise = true; break;
+					case "panorama": panorama = true; break;
+					case "plants": plants = true; break;
+				}
+			}
+
+			// scan parts for gravity ring
+			if (Lib.IsPowered(v))
 				{
 					firm_ground |= Lib.HasModule(v.protoVessel, "GravityRing", k => Lib.Proto.GetBool(k, "deployed"));
 				}
-			}
 
 			// calculate factor
 			factor = 0.1;
@@ -132,7 +119,7 @@ namespace KERBALISM
 						switch (c.bonus)
 						{
 							case "firm-ground": firm_ground = true; break;
-							case "not-alone": not_alone = true; break;
+							case "not-alone": not_alone = (Lib.CrewCount(c.vessel) > 1); break;
 							case "call-home": call_home = true; break;
 							case "exercise": exercise = true; break;
 							case "panorama": panorama = true; break;
