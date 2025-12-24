@@ -1,89 +1,99 @@
+## v3.30 for all versions of KSP from 1.8.0 to 1.12.x
+
+ - 2025-12-24
+
+ ### Changes since the last release
+ * Added: add datarate information to CONTROL PATH window (@Jorropo)
+ * Added: Add resources to SSPX deep space logistics modules (@MegaPiggy)
+ * Fixed: NaN in vessel info panel when hard drives have 0 capacity (@siimav)
+ * Fixed: radio path does not update with RemoteTech when switching from relay → KSC (@Jorropo)
+
 ## v3.29 for all versions of KSP from 1.8.0 to 1.12.x
 
  - 2025-12-14
 
  ### Changes since the last release
- *  Changed:  ECDrainViaPM now references a PartModules .moduleIsEnabled rather than the base MonoBehaviors .enabled, for more granular control. (@R-T-B)
+ * Changed: ECDrainViaPM now references a PartModules .moduleIsEnabled rather than the base MonoBehaviors .enabled, for more granular control. (@R-T-B)
 
 ## v3.28 for all versions of KSP from 1.8.0 to 1.12.x
 
  - 2025-12-12
 
  ### Changes since the last release
- *  Added:  Field moduleTitle to ECDrainViaPM, for showing what the EC Drain is coming from.  All this will be documented on the wiki very soon. (@R-T-B)
+ * Added: Field moduleTitle to ECDrainViaPM, for showing what the EC Drain is coming from.  All this will be documented on the wiki very soon. (@R-T-B)
 
 ## v3.27 for all versions of KSP from 1.8.0 to 1.12.x
 
  - 2025-12-11
 
  ### Changes since the last release
- *  Fix: Bugs in ECDrainViaPM module, only affecting those trying to use it but still... (@R-T-B)
+ * Fix: Bugs in ECDrainViaPM module, only affecting those trying to use it but still... (@R-T-B)
 
 ## v3.26 for all versions of KSP from 1.8.0 to 1.12.x
 
  - 2025-12-11
 
  ### Changes since the last release
- *  Fix: Disabled habitats included in radiation calculations #965 (@Shnpl)
- *  Add ECDrainViaPM module, allowing arbitrary EC drain and syncing to module enabled status on a named partmodule (documentation forthcoming) (@R-T-B)
+ * Fix: Disabled habitats included in radiation calculations #965 (@Shnpl)
+ * Add ECDrainViaPM module, allowing arbitrary EC drain and syncing to module enabled status on a named partmodule (documentation forthcoming) (@R-T-B)
 
 ## v3.25 for all versions of KSP from 1.8.0 to 1.12.x
 
  - 2025-09-21
 
  ### Changes since the last release
- *  ProcessController and related code refactor #948, fixes numerous bugs with psuedoresources #948 (@gotmachine)
- *  Normalize NFElectric needs & add support for my personal mod RDK #952 (@R-T-B)
+ * ProcessController and related code refactor #948, fixes numerous bugs with psuedoresources #948 (@gotmachine)
+ * Normalize NFElectric needs & add support for my personal mod RDK #952 (@R-T-B)
  
 ## v3.24 for all versions of KSP from 1.8.0 to 1.12.x
 
  - 2025-08-31
 
  ### Changes since the last release
- *  Emergency hotfix for Kerbals are stealing craft shielding on EVAs to make heavy, mad max space suits in eva refactor (3.23) Issue #939  (@R-T-B)
- *  If any crew transfers took place on 3.23, you might want to make sure Kerbals didn't shuffle shielding out along with them...  sorry about that.
+ * Emergency hotfix for Kerbals are stealing craft shielding on EVAs to make heavy, mad max space suits in eva refactor (3.23) Issue #939  (@R-T-B)
+ * If any crew transfers took place on 3.23, you might want to make sure Kerbals didn't shuffle shielding out along with them...  sorry about that.
  
 ## v3.23 for all versions of KSP from 1.8.0 to 1.12.x
 
  - 2025-08-30
 
  ### Changes since the last release
- *  EVA Kerbal handling refactor #935 (@gotmachine)
- *  Add min/max transmission rate experiment requirement #931  (@njits23)
+ * EVA Kerbal handling refactor #935 (@gotmachine)
+ * Add min/max transmission rate experiment requirement #931  (@njits23)
 
 ## v3.22 for all versions of KSP from 1.8.0 to 1.12.x
 
  - 2025-08-23
 
  ### Changes since the last release
- *  Kerbal EVA bug fixes #925 (@KerballOne)
- *  RealFuels KSP 1.11+ change evaJetpack fuel to Hydrazine #926 (@KerballOne)
- *  Near Future Electric has renamed several parts #927 (@KerballOne)
- *  Backport of the Kerbalism 4 stock science recovery dialog integration #923 (@gotmachine)
- *  Fixed an old bug on docking (@gotmachine)
- *  Habitat Refactor - General cleanup of the Habitat module #921 (@gotmachine)
- *  EVA Counter revamp to "Safe / Risky" status since counter was inaccurate (@R-T-B)
+ * Kerbal EVA bug fixes #925 (@KerballOne)
+ * RealFuels KSP 1.11+ change evaJetpack fuel to Hydrazine #926 (@KerballOne)
+ * Near Future Electric has renamed several parts #927 (@KerballOne)
+ * Backport of the Kerbalism 4 stock science recovery dialog integration #923 (@gotmachine)
+ * Fixed an old bug on docking (@gotmachine)
+ * Habitat Refactor - General cleanup of the Habitat module #921 (@gotmachine)
+ * EVA Counter revamp to "Safe / Risky" status since counter was inaccurate (@R-T-B)
 
 ## v3.21 for all versions of KSP from 1.8.0 to 1.12.x
 
  - 2025-08-13
 
  ### Changes since the last release
- *  Error handling fallback for NaN dampingExponent when using RemoteTech #914 (@KerballOne)
- *  As RemoteTech's last major bug was fixed above, removed it from the mod warning list. (@R-T-B)
- *  Improvements to the NFE RTG Profiles (more parts supported) (@R-T-B)
+ * Error handling fallback for NaN dampingExponent when using RemoteTech #914 (@KerballOne)
+ * As RemoteTech's last major bug was fixed above, removed it from the mod warning list. (@R-T-B)
+ * Improvements to the NFE RTG Profiles (more parts supported) (@R-T-B)
  
 ## v3.20 for all versions of KSP from 1.8.0 to 1.12.x
 
  - 2025-08-09
 
  ### Changes since the last release
- *  Fix for sickbays erroneously consuming resources after rendezvous #884 (@DougWagner)
- *  Change LifeSupportAtmoLoss from nitrogen to atmosphere. And fix EVAs available. #910 (@KerballOne)
- *  Fix broken Radiation Emitters outside of Flight Scene #911(@R-T-B)
- *  Update Unkerballed Start compatibility #909 (@hypodronic)
- *  Add habitats for pressurized modules in Stockalike Station Parts Redux #896 (@jessicest)
- *  A fix for editor lag as documented in issue #864 (@R-T-B)
+ * Fix for sickbays erroneously consuming resources after rendezvous #884 (@DougWagner)
+ * Change LifeSupportAtmoLoss from nitrogen to atmosphere. And fix EVAs available. #910 (@KerballOne)
+ * Fix broken Radiation Emitters outside of Flight Scene #911(@R-T-B)
+ * Update Unkerballed Start compatibility #909 (@hypodronic)
+ * Add habitats for pressurized modules in Stockalike Station Parts Redux #896 (@jessicest)
+ * A fix for editor lag as documented in issue #864 (@R-T-B)
 
 ## v3.19 for all versions of KSP from 1.8.0 to 1.12.x
 
