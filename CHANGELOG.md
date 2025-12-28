@@ -1,3 +1,10 @@
+## v3.31 for all versions of KSP from 1.8.0 to 1.12.x
+
+ - 2025-12-27
+
+ ### Changes since the last release
+ * Reverted: add datarate information to CONTROL PATH window: needs more work to ensure compatability (@Jorropo)
+
 ## v3.30 for all versions of KSP from 1.8.0 to 1.12.x
 
  - 2025-12-24
