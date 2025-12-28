@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace KERBALISM
 {
@@ -99,24 +98,13 @@ namespace KERBALISM
 		public string target_name;
 
 		/// <summary>
-		/// The next hop in the control path. (Guid.Empty if none or KSC)
+		/// Optional: communication path that will be displayed in the UI.
+		/// Each entry in the List is one "hop" in your path.
+		/// provide up to 3 values for each hop: string[] hop = { name, value, tooltip }
+		/// <para/>- name: the name of the relay/station
+		/// <para/>- value: link quality to that relay
+		/// <para/>- tooltip: anything you want to display, maybe link distance, frequency band used, ...
 		/// </summary>
-		public Guid next_hop = Guid.Empty;
-
-		/// <summary>
-		/// The distance to the next hop in meters.
-		/// </summary>
-		public double hop_distance;
-
-		/// <summary>
-		/// The maximum distance to the next hop in meters.
-		/// </summary>
-		public double hop_max_distance;
-
-		/// <summary>
-		/// The data rate to the next hop, contrary to rate which include the min along the path logic,
-		/// hop_datarate is only the data rate of this specific hop.
-		/// </summary>
-		public double hop_datarate;
+		public List<string[]> control_path = new List<string[]>();
 	}
 }
